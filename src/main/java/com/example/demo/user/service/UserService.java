@@ -46,7 +46,7 @@ public class UserService {
         return user;
     }
 
-    public void isExists(long id) throws UserNotFoundException {
+     private void isExists(long id) throws UserNotFoundException {
         boolean isExists = userRepository.existsById(id);
         if (!isExists) {
             throw new UserNotFoundException("User with id: " + id + " not found");
