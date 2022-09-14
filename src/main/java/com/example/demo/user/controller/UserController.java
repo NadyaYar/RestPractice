@@ -4,20 +4,16 @@ import com.example.demo.user.entity.MyUser;
 import com.example.demo.user.exeption.UserExistException;
 import com.example.demo.user.exeption.UserNotFoundException;
 import com.example.demo.user.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
-
-    @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
 
     @PostMapping
     public MyUser saveUser(@RequestBody MyUser user) throws UserExistException {

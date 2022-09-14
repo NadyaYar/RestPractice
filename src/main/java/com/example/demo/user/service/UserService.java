@@ -4,18 +4,14 @@ import com.example.demo.user.entity.MyUser;
 import com.example.demo.user.exeption.UserExistException;
 import com.example.demo.user.exeption.UserNotFoundException;
 import com.example.demo.user.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
-
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     public MyUser createUser(MyUser user) throws UserExistException {
         if (userRepository.existsById(user.getId())) {
